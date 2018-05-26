@@ -1,0 +1,12 @@
+<html>
+    <script>
+     function handleMenuCommands(event) {
+         // Can't access DOM inside global HTML so we communicate with messages */
+         if (event.command === "prune-branches") {
+             safari.application.activeBrowserWindow.activeTab.page.dispatchMessage("pruneBranchesMessage", "pruneBranches");
+         }
+     }
+
+     safari.application.addEventListener("command", handleMenuCommands, false);
+    </script>
+</html>
