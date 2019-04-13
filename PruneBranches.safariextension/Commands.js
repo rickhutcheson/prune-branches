@@ -8,11 +8,11 @@ function handleMessage(theMessageEvent) {
  * Query GitHub DOM for branch rows & auto-click their "delete' button
  */
 function findAndDeleteBranchElements() {
-    const rows = document.querySelectorAll('.branch-summary');
+    const rows = document.querySelectorAll('[data-branch-name]');
     Array.prototype.filter.call(rows, r => {
         return r.innerHTML.includes('Merged') ||  r.innerHTML.includes('Closed');
     }).forEach(mergedRow => {
-        mergedRow.querySelectorAll('.branch-delete').forEach(e => e.click());
+        mergedRow.querySelector('.js-branch-delete-target').click();
     });
 }
 
